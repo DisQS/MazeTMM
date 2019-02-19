@@ -1,59 +1,5 @@
-! -------------------------------------------------------------------
-! 
-! MODULE RNG_RLFSR113                                rng_rlfsr113.f90    
-! Random number generator RLFSR113  - real version
-!
-! -------------------------------------------------------------------
-       
-! -------------------------------------------------------------------
-!       
-! $Log: random.f90,v $
-! Revision 1.1.1.1  2012/09/07 10:00:09  phsht
-! tmseXd
-!
-! Revision 1.1  2011/05/06 08:13:09  phsht
-! 1st installement
-!
-! Revision 1.2  2010/10/26 09:43:39  phrkaj
-! Deleted naive debugging statements, got rid of ILevelflag and IConvflag, deleted old logs
-!
-! Revision 1.1.1.1  2010/10/22 12:23:38  phsht
-! ParaTMM
-!
-! $Header: /home/cvs/phsht/tmseXd/src/random.f90,v 1.1.1.1 2012/09/07 10:00:09 phsht Exp $
-!
-! -------------------------------------------------------------------
-
-! -------------------------------------------------------------------
-!
-! Random number generator RLFSR113  - real version
-!
-! Following a suggestion of Pierre L'Ecuyer 1997
-! "Tables of maximally equidistributed combined LFSR generators"
-! see http://www.iro.umontreal.ca/~lecuyer/papers.html
-!
-! A call to rlfsr113() gives one random real in the open
-! interval (0,1).
-!
-! Before using rlfsr113 call lfsrinit(seed) to initialize
-! the generator by random integers produced by Park/Millers
-! minimal standard LCG.
-! Seed should be any positive integer.
-! 
-! FORTRAN version by Thomas Vojta, vojta@physik.tu-chemnitz.de
-! 
-! History:
-!  04 Feb 1998    v0.9    first FORTRAN implementation
-!  05 Feb 1998    v0.91   corrected multiplicator am to 1/(2^31)
-! 
-! -------------------------------------------------------------------
-
-! -------------------------------------------------------------------
-! changed for use in f90
-! -------------------------------------------------------------------
-
 module RNG_RLFSR113
-  use MyNumbers
+  USE SystemParameters
   implicit none
   
   ! accessibility
@@ -171,67 +117,10 @@ contains
 
 end module RNG_RLFSR113
 
-! -------------------------------------------------------------------
-! 
-! MODULE RandomNumberGenerator                          random.f90    
-! RANDOM - Standard F77/F90 interface for random number generators
-!
-! -------------------------------------------------------------------
-       
-! -------------------------------------------------------------------
-!       
-! $Log: random.f90,v $
-! Revision 1.1.1.1  2012/09/07 10:00:09  phsht
-! tmseXd
-!
-! Revision 1.1  2011/05/06 08:13:09  phsht
-! 1st installement
-!
-! Revision 1.2  2010/10/26 09:43:39  phrkaj
-! Deleted naive debugging statements, got rid of ILevelflag and IConvflag, deleted old logs
-!
-! Revision 1.1.1.1  2010/10/22 12:23:38  phsht
-! ParaTMM
-!
-! Revision 1.1  2009/03/31 12:39:29  phsht
-! small changes in names etc from tmse2dSBXX to make COE compatible
-!
-! Revision 1.1  2009/01/18 11:03:53  phsht
-! added files from all tm2e2DSBX
-!
-! Revision 1.1  2008/06/17 10:13:54  phsht
-! added tmse2dSB/f90 files
-!
-! Revision 1.1  2003/07/07 11:10:59  phsht
-! Initial revision
-!
-! Revision 1.3  2002/04/16 14:16:59  rar
-! made =4 -> ikind, =8 -> rkind
-!
-! Revision 1.2  2002/04/16 08:54:01  rar
-! new RNG management
-!
-! Revision 1.1  2002/04/15 08:51:19  rar
-! Initial revision
-!
-! Revision 1.1  2002/03/11 12:11:54  rham
-! Initial revision
-!
-! $Header: /home/cvs/phsht/tmseXd/src/random.f90,v 1.1.1.1 2012/09/07 10:00:09 phsht Exp $
-!
-! -------------------------------------------------------------------
-
-! *******************************************************************
-!
-!       History prior to version 2.0:
-!
-!       24/01/96 RAR: perfectly new installation
-!
-! *******************************************************************
 
 module RNG
   use RNG_RLFSR113
-  use MyNumbers
+  use SystemParameters
 
   implicit none
 

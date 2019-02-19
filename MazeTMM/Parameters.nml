@@ -1,0 +1,15 @@
+&SystemSettings
+	Width=23, Dim=3, BoundaryCon='O',LoopDirection='D', MazeType=1, MazePotential=200.0
+&end
+
+&RunControl
+	ConvCriterion=0.005, NofOrtho=10, SubSteps=2
+&end
+
+&EnergyLoop
+	Energy0=0.0, Energy1=1.0, dEnergy=0.1,DiagDis=3.0
+&end
+
+&DisorderLoop
+	DiagDis0=30.0, DiagDis1=10.0, dDiagDis=0.5, Energy=0.0
+&end

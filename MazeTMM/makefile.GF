@@ -78,9 +78,9 @@ OBJ = SystemParameters.o  random.o  io.o  util.o maze.o  Main.o
 %.o: %.F
 	$(FC) $(F77FLAGS) -DF77 -c $< -I$(INCLUDEDIR) $(LIBFLAGS)
 
-all:	tmseMAZExD.GF.GF
+all:	tmseMAZExD.GF
  
-tmseMAZExD.GF.GF: $(OBJ)
+tmseMAZExD.GF: $(OBJ)
 	$(F90) $(F90FLAGS) -o $@ $(OBJ) $(LIBFLAGS)
 
 clean:

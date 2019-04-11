@@ -231,7 +231,7 @@ MODULE io_module
         CALL appendBaseName(Filename,'.DAT')
         
         Existence=CheckName(Filename)
-        IF (0==Existence) THEN
+        IF (Existence) THEN
             CALL openUnit(Filename,110,'N')
         ELSE
             CALL openUnit(Filename,110,'A')

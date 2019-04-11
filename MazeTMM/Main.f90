@@ -50,7 +50,7 @@ PROGRAM TMMxD
         PRINT *, 'Loop Direction ',LoopDirection,' is not allowed!'
         STOP
     END IF
-    IF (PrintSwitch) THEN
+    IF (PrintSwitch==1) THEN
         PRINT *, 'Beginning A Transform Matrix Case study!'
         PRINT '(A11,I1,A8,I2,A20,A1,A10,I2,A15,F6.1)', ' Dimension=',Dim,', Width=',Width, ' Boundary Condition=',BoundaryCon,' MazeType=',MazeType,' MazePotential=',MazePotential
         PRINT '(A15,E7.1,A12,I2,A30,I3)', ' ConvCriterion=',ConvCriterion,' SubSteps=',SubSteps,' Steps in each ortho=',NofOrtho
@@ -110,12 +110,12 @@ PROGRAM TMMxD
         ELSE
             Energy=Flux
         END IF
-        IF (PrintSwitch) THEN
+        IF (PrintSwitch==1) THEN
             PRINT '(A17, F6.1,A9,F6.1,A12)', ' Start Disorder ',DiagDis,' Energy ',Energy,' TMM study!'
         END IF
         
         !reset vectors and matrices
-        Conv=" "
+        Conv=0 !" "
         PsiA=ZERO
         PsiB=ZERO
         Gammas=ZERO
@@ -157,7 +157,7 @@ PROGRAM TMMxD
             !Wrtite AveGammas and Variance to file for later check of the convegence process
             !CALL WriteAveGammasAndVarToFile(Index,AveGammas(1),Variance(1))
             
-            IF (PrintSwitch) THEN
+            IF (PrintSwitch==1) THEN
                 PRINT '(A20, F6.2,A10,F6.2,A14,I8,A23,F8.4,A8,F8.4)', ' TMM With Disorder ', DiagDis,' Energy ',Energy,' finish the ',Index,' ortho with avegamma ',AveGammas(1),' var ',Variance(1)
             END IF
             
@@ -178,7 +178,7 @@ PROGRAM TMMxD
         CALL WriteOutput(DiagDis,Energy,AveGammas,Variance,Index,Conv,PsiA,WidthSquared)
         
         
-        IF (PrintSwitch) THEN
+        IF (PrintSwitch==1) THEN
             PRINT '(A20, F6.2,A10,F6.2,A12)', ' TMM for disorder ',DiagDis,' Energy ',Energy,' is done!'
         END IF
          
@@ -186,11 +186,11 @@ PROGRAM TMMxD
     
     DEALLOCATE(PsiA,PsiB,Gammas,GammasSquared,AveGammas,Variance,Maze)
     
-    IF (PrintSwitch) THEN
+    IF (PrintSwitch==1) THEN
         PRINT *, ' TMM is done!'
     END IF
     CALL CPU_TIME(tock)
-    IF (PrintSwitch) THEN
+    IF (PrintSwitch==1) THEN
         PRINT *, 'Time taken=',(tock-tick)/3600.0,' hours!'
     END IF
     
